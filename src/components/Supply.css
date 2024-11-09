@@ -1,0 +1,13 @@
+.Supply {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    @media print {
+        display: none;
+    }
+}
+
+.Supply .Tile {
+    margin: 1px;
+}

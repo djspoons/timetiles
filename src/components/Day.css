@@ -1,0 +1,15 @@
+.Day {
+    margin-block-start: 0.5em;
+    min-width: 100px;
+    justify-content: center;
+}
+
+.day-header {
+    padding-bottom: 0.25em;
+}
+
+.day-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}

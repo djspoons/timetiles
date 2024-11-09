@@ -1,0 +1,6 @@
+.Reset {
+  align-content: center;
+  @media print {
+    display: none;
+  }
+}

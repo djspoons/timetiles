@@ -1,0 +1,14 @@
+.Tile {
+    align-content: center;
+    writing-mode: vertical-rl;
+    width: 60px;
+    cursor: move;
+
+    span {
+        vertical-align: middle;
+    }
+
+    @media print {
+        color: transparent;
+    }
+}

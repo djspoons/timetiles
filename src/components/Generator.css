@@ -1,0 +1,39 @@
+.Generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    font-family: "Gill Sans", sand-serif;
+    font-size: .75em;
+    color: rgb(108, 33, 33);
+
+    @media print {
+        display: none;
+    }
+}
+
+#label-input {
+    width: 100px;
+}
+#duration-input {
+    width: 40px;
+}
+
+.Generator .color-picker {
+    display: grid; 
+    grid-template-areas: 
+      ". . . ."
+      ". . . ."; 
+}
+.Generator .color-chip {
+    width: 30px;
+    height: 20px;
+}
+
+.Generator .color-chip:hover {
+    cursor: pointer;
+}
+
+.Generator .selected {
+    border: 2px solid rgb(108, 33, 33);
+}

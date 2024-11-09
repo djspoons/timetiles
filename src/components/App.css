@@ -1,0 +1,110 @@
+.App {
+  text-align: center;
+  background-color: white;
+  display: flex; /* XXX maybe don't need this */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(108, 33, 33);
+  font-family: "Gill Sans", sand-serif;
+}
+
+.TimeTiles {
+  min-height: 95vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 200px 100px;
+  gap: 5px 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "S M T W ϴ F Σ"
+    "Generator Generator Supply Supply Supply Supply Supply"
+    "Reset Trash Supply Supply Supply Supply Supply";
+}
+
+/* Top-level grid stuff */
+.S { grid-area: S; }
+.M { grid-area: M; }
+.T { grid-area: T; }
+.W { grid-area: W; }
+.ϴ { grid-area: ϴ; }
+.F { grid-area: F; }
+.Σ { grid-area: Σ; }
+.Generator { grid-area: Generator; }
+.Supply { grid-area: Supply; }
+.Reset { grid-area: Reset ; }
+.Trash { grid-area: Trash ; }
+
+/* Common styles */
+.container {
+  background-color: beige;
+  @media print {
+    background-color: rgba(245, 245, 220, 0.3);
+  }
+  border: 2px dashed tan;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.colored {
+  border-radius: 3px;
+  margin: 3px;
+  border: 2px solid tan;
+}
+
+.tile-color-1 { background-color: #87cefa }
+.tile-color-2 { background-color: #98fb98 }
+.tile-color-3 { background-color: #b1a5f8; }
+.tile-color-4 { background-color: #cc8785 }
+.tile-color-5 { background-color: #d1d1d1 }
+.tile-color-6 { background-color: #ff69b4 }
+.tile-color-7 { background-color: #ffff54 }
+.tile-color-8 { background-color: #ff6347 }
+
+.button {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: rgb(108, 33, 33);
+  font-family: "Gill Sans", sand-serif;
+  font-size: .75em;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .5rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.button:disabled {
+  color: rgb(156, 163, 175);
+  cursor: default;
+}
+
+.button:hover:enabled {
+  background-color: rgb(249,250,251);
+}
+
+.button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.button:focus-visible {
+  box-shadow: none;
+}
+
+input {
+  font-family: "Gill Sans", sand-serif;
+  font-size: .75em;
+  color: rgb(108, 33, 33);
+  border: 2px solid rgb(108, 33, 33);
+  border-radius: 5px;
+  margin: 3px 0px;
+}
