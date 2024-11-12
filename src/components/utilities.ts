@@ -1,4 +1,4 @@
-import { CollisionDetection, closestCenter, closestCorners, rectIntersection } from '@dnd-kit/core';
+import { CollisionDetection, closestCenter, rectIntersection } from '@dnd-kit/core';
 
 export const collisionDetection : CollisionDetection = function({
   droppableContainers,

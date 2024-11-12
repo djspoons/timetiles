@@ -1,4 +1,4 @@
-import React, { useState, RefObject } from 'react';
+import React from 'react';
 
 import { DndContext } from '@dnd-kit/core';
 import dnd from '@dnd-kit/core';
@@ -13,7 +13,6 @@ import './App.css';
 import Supply from './Supply';
 import Generator from './Generator';
 import Day from './Day';
-import { TileProps } from './Tile';
 import Trash from './Trash';
 import Reset from './Reset';
 

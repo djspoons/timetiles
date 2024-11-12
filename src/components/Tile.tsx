@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
-
-import { useAppSelector as useSelector,
-    useAppDispatch as useDispatch } from '../hooks';
 
 import './Tile.css';
 
@@ -14,7 +11,6 @@ export interface TileProps {
 }
 
 export const Tile: React.FC<TileProps> = ({uuid, minutes, className, label}) => {
-    const dispatch = useDispatch();
     const dayLength = 60 * 4;
     const {attributes, listeners, setNodeRef: setDraggableNodeRef, transform} = useDraggable({
         id: uuid,

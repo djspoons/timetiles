@@ -5,7 +5,7 @@ import { useAppSelector as useSelector } from '../hooks';
 import { SUPPLY_INDEX } from '../constants';
 
 import './Supply.css';
-import Tile, { TileProps } from './Tile';
+import Tile from './Tile';
 
 const Supply: React.FC = () => {
     const tiles = useSelector((state) => state.containers)[SUPPLY_INDEX];
