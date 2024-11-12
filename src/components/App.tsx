@@ -18,7 +18,8 @@ import Reset from './Reset';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const containers = useSelector((state) => state.containers);
+  const containers = useSelector((state) => state.tiles.containers);
+  const dayLabels = useSelector((state) => state.days.labels);
 
   function handleDragEnd(event : dnd.DragEndEvent) {
     if (event.over === null) {
@@ -86,13 +87,11 @@ const App: React.FC = () => {
       >
         {/* XXX try DndOverlay? */}
         <div className="TimeTiles" >
-          <Day name="S" index={1} />
-          <Day name="M" index={2} />
-          <Day name="T" index={3} />
-          <Day name="W" index={4} />
-          <Day name="ϴ" index={5} />
-          <Day name="F" index={6} />
-          <Day name="Σ" index={7} />
+          {
+            dayLabels.map((label, index) => (
+                <Day key={'day' + (index + 1)} name={label} index={index + 1} />
+            ))
+          }
           <Generator />
           <Trash />
           <Reset />

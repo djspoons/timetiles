@@ -48,5 +48,14 @@ export const tilesSlice = createSlice({
     }
 })
 
+export const daysSlice = createSlice({
+    name: 'days',
+    initialState: {
+        labels: ['S', 'M', 'T', 'W', 'ϴ', 'F', 'Σ'],
+    },
+    reducers: {}
+});
+
 export const { addTile, removeTile, resetTiles } = tilesSlice.actions;
 export const tilesReducer = tilesSlice.reducer;
+export const daysReducer = daysSlice.reducer;

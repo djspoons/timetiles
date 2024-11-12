@@ -13,7 +13,7 @@ export type DayProps = {
 
 const Day: React.FC<DayProps> = ({name, index}) => {
   const id = 'day-' + index;
-  const tiles = useSelector((state) => state.containers)[index];
+  const tiles = useSelector((state) => state.tiles.containers)[index];
   const {setNodeRef} = useDroppable({
     id,
     data: {

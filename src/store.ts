@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import {
   persistReducer,
   FLUSH,
@@ -10,14 +10,15 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import { tilesReducer } from './reducer'
+import { tilesReducer, daysReducer } from './reducer'
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
 }
-const persistedReducer = persistReducer(persistConfig, tilesReducer)
+const persistedReducer = persistReducer(persistConfig,
+   combineReducers({tiles: tilesReducer, days: daysReducer}))
 
 export const store = configureStore({
   reducer: persistedReducer,

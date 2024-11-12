@@ -8,7 +8,7 @@ import './Supply.css';
 import Tile from './Tile';
 
 const Supply: React.FC = () => {
-    const tiles = useSelector((state) => state.containers)[SUPPLY_INDEX];
+    const tiles = useSelector((state) => state.tiles.containers)[SUPPLY_INDEX];
     const {setNodeRef} = useDroppable({
         id: "supply",
         data: {
