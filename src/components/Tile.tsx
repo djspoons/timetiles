@@ -8,12 +8,16 @@ export interface TileProps {
     label: string;
     minutes: number;
     className: string; // should set a background color
+    containerIndex: number; // sort of redundant with the state structure, but nice to have to set data
 }
 
-export const Tile: React.FC<TileProps> = ({uuid, minutes, className, label}) => {
+export const Tile: React.FC<TileProps> = ({uuid, minutes, className, label, containerIndex}) => {
     const dayLength = 60 * 4;
     const {attributes, listeners, setNodeRef: setDraggableNodeRef, transform} = useDraggable({
         id: uuid,
+        data: {
+            containerIndex,
+        },
     });
     const {setNodeRef: setDroppableNodeRef} = useDroppable({
         id: 'placeholder-' + uuid,

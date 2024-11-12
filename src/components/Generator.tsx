@@ -33,13 +33,13 @@ export const Generator: React.FC = () => {
     const dispatch = useDispatch();
     const buttonClicked = () => {
       dispatch(addTile({
-        containerIndex: SUPPLY_INDEX,
         tileIndex: -1, // Put it at the end
         tile: {
           uuid: uuid(),
           className: classNameValue,
           label: labelValue,
           minutes: +durationValue,
+          containerIndex: SUPPLY_INDEX,
         },
       }));
     };

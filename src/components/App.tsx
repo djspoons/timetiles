@@ -33,22 +33,14 @@ const App: React.FC = () => {
       return;
     }
 
-    // Figure out which container the active tile is in and its 
-    // index in that container.
-    let activeContainerIndex = -1;
-    let activeTile = undefined;
-    for (let i = 0; i < containers.length; i++) {
-      activeTile = containers[i].find(
-        (tile) => tile.uuid === event.active.id);
-      if (activeTile !== undefined) {
-        activeContainerIndex = i;
-        break;
-      }
-    }
+    // Figure out which container the active tile is in and get the full tile.
+    let activeContainerIndex = event.active.data.current?.containerIndex;
     if (activeContainerIndex < 0) {
       console.log('Active tile not found in supply or days!!');
       return;
     }
+    let activeTile = containers[activeContainerIndex].find(
+        (tile) => tile.uuid === event.active.id);
 
     // Figure out if 'over' is part of the supply or a day (and if more
     // than one, which one is colliding the most).
@@ -75,7 +67,10 @@ const App: React.FC = () => {
     }
 
     dispatch(removeTile(event.active.id));
-    dispatch(addTile({containerIndex: overContainerIndex, tileIndex: overTileIndex, tile: activeTile}));
+    dispatch(addTile({
+      tileIndex: overTileIndex,
+      tile: {...activeTile, containerIndex: overContainerIndex},
+    }));
   }
 
   return (
