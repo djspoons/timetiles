@@ -23,10 +23,7 @@ const App: React.FC = () => {
   const dayLabels = useSelector((state) => state.days.labels);
 
   function handleDragEnd(event : dnd.DragEndEvent) {
-    console.log('Drag end', event);
-
     if (event.over === null) {
-      console.log('Nothing to do');
       return;
     }
 
@@ -39,7 +36,6 @@ const App: React.FC = () => {
       }
     }
     if (tile === undefined) {
-      console.log('Tile not found');
       return;
     }
 
@@ -52,7 +48,6 @@ const App: React.FC = () => {
     // ==> Supply
     if (event.over?.data.current?.containerId === SUPPLY_ID &&
       event.over?.data.current?.tileId === undefined) {
-      console.log('Adding to end of supply');
       dispatch(removeTile(event.active.id));
       dispatch(addTile({
         containerId: SUPPLY_ID,
@@ -96,7 +91,6 @@ const App: React.FC = () => {
       }));
       return;
     }
-    console.log('Nothing for this move', event.over);
   }
 
   return (

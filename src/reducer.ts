@@ -14,7 +14,6 @@ export const tilesSlice = createSlice({
     } as TilesState,
     reducers: {
         addTile: (state, action) => {
-            console.log('Adding tile', action.payload);
             if (action.payload.index < 0) {
                 state.containers[action.payload.containerId].push(
                     {...action.payload.tile,
