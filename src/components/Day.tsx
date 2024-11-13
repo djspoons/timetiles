@@ -23,7 +23,7 @@ const Gap: React.FC<{index: number, containerId: number}> = ({index, containerId
     },
   });
   return (
-    <div ref={setNodeRef} className="gap" />
+    <div ref={setNodeRef} className="Gap tile-holder" />
   );
 }
 
@@ -35,9 +35,9 @@ const Day: React.FC<DayProps> = ({label, id}) => {
     });
 
   return (
-    <div className="Day container" id={'day-' + id}>
+    <div className="Day tile-container" id={'day-' + id}>
       <div className="day-header">{label}</div>
-      <div className="day-container">
+      <div>
         {
           children.map((tile, index) => (
             tile === undefined ?

@@ -27,7 +27,7 @@ export const Tile: React.FC<TileSpec & { index: number, containerId: number}> = 
     } : undefined;
 
     return (
-        <div ref={setDroppableNodeRef}>
+        <div className="tile-holder" ref={setDroppableNodeRef}>
             <div className={'Tile colored ' + className}
                 ref={setDraggableNodeRef} {...listeners} {...attributes}
                 style={style}

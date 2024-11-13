@@ -28,6 +28,7 @@
 .Generator .color-chip {
     width: 30px;
     height: 20px;
+    margin: 3px;
 }
 
 .Generator .color-chip:hover {

@@ -37,7 +37,7 @@
 .Trash { grid-area: Trash ; }
 
 /* Common styles */
-.container {
+.tile-container {
   background-color: beige;
   @media print {
     background-color: rgba(245, 245, 220, 0.3);
@@ -47,9 +47,14 @@
   padding: 5px;
 }
 
+.tile-holder {
+  width: 60px;
+  height: 15vh;
+  margin: 3px;
+}
+
 .colored {
   border-radius: 3px;
-  margin: 3px;
   border: 2px solid tan;
 }
 

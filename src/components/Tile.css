@@ -1,9 +1,10 @@
 .Tile {
     align-content: center;
     writing-mode: vertical-rl;
-    height: 15vh;
-    width: 60px;
     cursor: move;
+    /* subtract border width */
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
 
     span {
         vertical-align: middle;

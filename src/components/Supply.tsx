@@ -16,7 +16,7 @@ const Supply: React.FC = () => {
         },
     });
     return (
-        <div className="Supply container" ref={setNodeRef}>
+        <div className="Supply tile-container" ref={setNodeRef}>
         {
             tiles.map((tile) => {
                 return (
