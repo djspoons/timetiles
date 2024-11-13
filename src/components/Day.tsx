@@ -37,7 +37,7 @@ const Day: React.FC<DayProps> = ({label, id}) => {
   return (
     <div className="Day tile-container" id={'day-' + id}>
       <div className="day-header">{label}</div>
-      <div>
+
         {
           children.map((tile, index) => (
             tile === undefined ?
@@ -49,7 +49,7 @@ const Day: React.FC<DayProps> = ({label, id}) => {
               />
           ))
         }
-      </div>
+
     </div>
   );
 }

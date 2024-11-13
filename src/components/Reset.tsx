@@ -13,8 +13,8 @@ const Reset: React.FC = () => {
         dispatch(resetTiles());
     }
     return (
-        <div className="Reset">
-            <button className="Reset button" onClick={buttonHandler}>
+        <div id="Reset">
+            <button className="button" onClick={buttonHandler}>
               <FaArrowsRotate />
             </button>
         </div>

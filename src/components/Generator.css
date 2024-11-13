@@ -1,4 +1,4 @@
-.Generator {
+#Generator {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,28 +13,29 @@
 }
 
 #label-input {
-    width: 100px;
-}
-#duration-input {
-    width: 40px;
+    width: 80%;
 }
 
-.Generator .color-picker {
+#Generator .color-picker {
     display: grid; 
     grid-template-areas: 
       ". . . ."
       ". . . ."; 
 }
-.Generator .color-chip {
+#Generator .color-chip {
     width: 30px;
     height: 20px;
     margin: 3px;
 }
 
-.Generator .color-chip:hover {
+#Generator .color-chip:hover {
     cursor: pointer;
 }
 
-.Generator .selected {
+#Generator .selected {
     border: 2px solid rgb(108, 33, 33);
+}
+
+#Generator .button {
+    width: 80%;
 }

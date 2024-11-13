@@ -1,6 +1,7 @@
-.Trash {
+#Trash {
   align-content: center;
   border-radius: 5px;
+  border: 2px dashed tan;
 
   @media print {
     display: none;

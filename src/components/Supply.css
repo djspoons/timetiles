@@ -1,4 +1,4 @@
-.Supply {
+#Supply {
     display: inline-flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -8,6 +8,10 @@
     }
 }
 
-.Supply .Tile {
+#Supply .tile-holder {
+    height: calc(50% - 8px);
+}
+
+#Supply .Tile {
     margin: 1px;
 }

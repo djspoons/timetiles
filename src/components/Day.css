@@ -1,6 +1,5 @@
 .Day {
     margin-block-start: 0.5em;
-/*    min-width: 100px; XXX */
     justify-content: center;
 }
 
@@ -17,8 +16,11 @@
 
 .Day .tile-holder {
     /* Extra space if a tile or gap is in a day */
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    height: calc(30% - 4px);
 }
 
 .Gap {

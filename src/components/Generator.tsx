@@ -39,7 +39,7 @@ export const Generator: React.FC = () => {
     };
 
     return (
-        <div className="Generator">
+        <div id="Generator">
           <input type="text" id="label-input" placeholder="Label" 
             value={labelValue} onChange={handleLabelChange} />
           <div className="color-picker">

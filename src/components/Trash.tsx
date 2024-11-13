@@ -15,7 +15,7 @@ const Trash: React.FC = () => {
   };
   
   return (
-    <div id="trash" className="Trash"
+    <div id="Trash"
       ref={setNodeRef} 
       style={style}
     >

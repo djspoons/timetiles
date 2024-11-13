@@ -107,15 +107,19 @@ const App: React.FC = () => {
         collisionDetection={collisionDetection}
       >
         {/* XXX try DndOverlay? */}
-        <div className="TimeTiles" >
+        <div id="TimeTiles" >
           {
             dayLabels.map((label, index) => (
                 <Day key={'day' + (index + 1)} label={label} id={index + 1} />
             ))
           }
-          <Generator />
-          <Trash />
-          <Reset />
+          <div id="Controls">
+            <Generator />
+            <div className="button-container">
+              <Reset />
+              <Trash />
+            </div>
+          </div>
           <Supply />
         </div>
       </DndContext>
