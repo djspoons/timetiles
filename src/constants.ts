@@ -1,3 +1,3 @@
 
-export const SUPPLY_INDEX = 0;
-export const TRASH_ID = 'trash';
+export const SUPPLY_ID = 0;
+export const TRASH_ID = 10;

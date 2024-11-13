@@ -3,37 +3,52 @@ import { useDroppable } from '@dnd-kit/core';
 
 import { useAppSelector as useSelector } from '../hooks';
 
-import Tile from './Tile';
+import Tile, { TileSpec} from './Tile';
 import './Day.css';
 
+const DAY_SLOTS = 3;
+
 export type DayProps = {
-  name: string;
-  index: number;
+  label: string;
+  id: number;
 }
 
-const Day: React.FC<DayProps> = ({name, index}) => {
-  const id = 'day-' + index;
-  const tiles = useSelector((state) => state.tiles.containers)[index];
+const Gap: React.FC<{index: number, containerId: number}> = ({index, containerId}) => {
   const {setNodeRef} = useDroppable({
-    id,
+    id: 'gap-' + containerId + '-' + index,
     data: {
-      index,
+        containerId,
+        index,
+        empty: true,
     },
   });
+  return (
+    <div ref={setNodeRef} className="gap" />
+  );
+}
+
+const Day: React.FC<DayProps> = ({label, id}) => {
+  const tiles = useSelector((state) => state.tiles.containers)[id];
+  const children = Array.from({length: DAY_SLOTS}, 
+    (_, index) => {
+      return tiles.find((tile) => tile?.index === index);
+    });
 
   return (
-    <div className="Day container" id={id} ref={setNodeRef}>
-      <div className="day-header">{name}</div>
+    <div className="Day container" id={'day-' + id}>
+      <div className="day-header">{label}</div>
       <div className="day-container">
-      {
-        tiles.map((tile) => {
-          return (
-            <Tile key={tile.uuid}
-                  {...tile}
-            />
-          );
-        })
-      }
+        {
+          children.map((tile, index) => (
+            tile === undefined ?
+              <Gap key={'gap-' + index} index={index} containerId={id} />
+            :
+              <Tile {...tile}
+                key={tile.uuid}
+                containerId={id}
+              />
+          ))
+        }
       </div>
     </div>
   );

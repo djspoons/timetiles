@@ -1,6 +1,7 @@
 .Tile {
     align-content: center;
     writing-mode: vertical-rl;
+    height: 15vh;
     width: 60px;
     cursor: move;
 
