@@ -1,14 +1,16 @@
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
 
-import { useAppSelector as useSelector } from '../hooks';
 import { SUPPLY_ID } from '../constants';
 
 import './Supply.css';
-import Tile from './Tile';
+import Tile, { TileSpec } from './Tile';
 
-const Supply: React.FC = () => {
-    const tiles = useSelector((state) => state.tiles.supply);
+interface SupplyProps {
+    tiles: TileSpec[];
+}
+
+const Supply: React.FC<SupplyProps> = ({tiles}) => {
     const {setNodeRef} = useDroppable({
         id: 'supply',
         data: {
@@ -18,15 +20,13 @@ const Supply: React.FC = () => {
     return (
         <div id="Supply" className="tile-container" ref={setNodeRef}>
         {
-            tiles.map((tile, index) => {
-                return (
-                    tile ? <Tile {...tile}
-                                key={tile.uuid}
-                                containerId={SUPPLY_ID}
-                                index={index}
-                            /> : undefined
-                );
-            })
+            tiles.map((tile, index) => (
+                <Tile {...tile}
+                    key={tile.uuid}
+                    containerId={SUPPLY_ID}
+                    index={index}
+                />
+            ))
         }
         </div>
 

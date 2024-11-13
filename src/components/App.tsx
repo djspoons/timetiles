@@ -19,8 +19,8 @@ import Reset from './Reset';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const supply = useSelector((state) => state.tiles.supply);
-  const days = useSelector((state) => state.tiles.days);
+  const supplyTiles = useSelector((state) => state.tiles.supply);
+  const dayTiles = useSelector((state) => state.tiles.days);
   const dayLabels = useSelector((state) => state.days.labels);
 
   function handleDragEnd(event : dnd.DragEndEvent) {
@@ -29,8 +29,8 @@ const App: React.FC = () => {
     }
 
     let tile = undefined as TileSpec | undefined;
-    for (let i = 0; i < days.length; i++) {
-      const found = days[i].find((tile) => tile?.uuid === event.active.id);
+    for (let i = 0; i < dayTiles.length; i++) {
+      const found = dayTiles[i].find((tile) => tile?.uuid === event.active.id);
       if (found !== undefined) {
         const {index, ...rest} = found;
         tile = rest;
@@ -38,7 +38,7 @@ const App: React.FC = () => {
       }
     }
     if (tile === undefined) {
-      const found = supply.find((tile) => tile?.uuid === event.active.id);
+      const found = supplyTiles.find((tile) => tile?.uuid === event.active.id);
       if (found !== undefined) {
         tile = found;
       }
@@ -101,7 +101,11 @@ const App: React.FC = () => {
         <div id="TimeTiles" >
           {
             dayLabels.map((label, index) => (
-                <Day key={'day-' + index} label={label} id={index} />
+                <Day key={'day-' + index}
+                  label={label}
+                  id={index}
+                  tiles={dayTiles[index]}
+                />
             ))
           }
           <div id="Controls">
@@ -111,7 +115,7 @@ const App: React.FC = () => {
               <Trash />
             </div>
           </div>
-          <Supply />
+          <Supply tiles={supplyTiles}/>
         </div>
       </DndContext>
     </div>
