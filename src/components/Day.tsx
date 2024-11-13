@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core';
 
 import { useAppSelector as useSelector } from '../hooks';
 
-import Tile, { TileSpec} from './Tile';
+import Tile from './Tile';
 import './Day.css';
 
 const DAY_SLOTS = 3;
@@ -28,7 +28,7 @@ const Gap: React.FC<{index: number, containerId: number}> = ({index, containerId
 }
 
 const Day: React.FC<DayProps> = ({label, id}) => {
-  const tiles = useSelector((state) => state.tiles.containers)[id];
+  const tiles = useSelector((state) => state.tiles.days)[id];
   const children = Array.from({length: DAY_SLOTS}, 
     (_, index) => {
       return tiles.find((tile) => tile?.index === index);

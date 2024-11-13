@@ -18,17 +18,17 @@
   grid-template-rows: 60% 35%;
   gap: 5px 5px;
   grid-template-areas:
-    "day-1 day-2 day-3 day-4 day-5 day-6 day-7"
+    "day-0 day-1 day-2 day-3 day-4 day-5 day-6"
     "Controls Controls Supply Supply Supply Supply Supply"
 }
 
+#day-0 { grid-area: day-0; }
 #day-1 { grid-area: day-1; }
 #day-2 { grid-area: day-2; }
 #day-3 { grid-area: day-3; }
 #day-4 { grid-area: day-4; }
 #day-5 { grid-area: day-5; }
 #day-6 { grid-area: day-6; }
-#day-7 { grid-area: day-7; }
 #Controls { grid-area: Controls; }
 #Supply { grid-area: Supply; }
 

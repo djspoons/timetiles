@@ -19,7 +19,8 @@ import Reset from './Reset';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const containers = useSelector((state) => state.tiles.containers);
+  const supply = useSelector((state) => state.tiles.supply);
+  const days = useSelector((state) => state.tiles.days);
   const dayLabels = useSelector((state) => state.days.labels);
 
   function handleDragEnd(event : dnd.DragEndEvent) {
@@ -27,15 +28,23 @@ const App: React.FC = () => {
       return;
     }
 
-    let tile = undefined as TileSpec & {index: number} | undefined;
-    for (let i = 0; i < containers.length; i++) {
-      const found = containers[i].find((tile) => tile?.uuid === event.active.id);
+    let tile = undefined as TileSpec | undefined;
+    for (let i = 0; i < days.length; i++) {
+      const found = days[i].find((tile) => tile?.uuid === event.active.id);
       if (found !== undefined) {
-        tile = found;
+        const {index, ...rest} = found;
+        tile = rest;
         break;
       }
     }
     if (tile === undefined) {
+      const found = supply.find((tile) => tile?.uuid === event.active.id);
+      if (found !== undefined) {
+        tile = found;
+      }
+    }
+    if (tile === undefined) {
+      console.log('Tile not found');
       return;
     }
 
@@ -48,18 +57,6 @@ const App: React.FC = () => {
     // ==> Supply
     if (event.over?.data.current?.containerId === SUPPLY_ID &&
       event.over?.data.current?.tileId === undefined) {
-      dispatch(removeTile(event.active.id));
-      dispatch(addTile({
-        containerId: SUPPLY_ID,
-        index: -1,
-        tile,
-      }));
-      return;
-    }
-
-    // Over itself in a Day
-    if (event.over?.data.current?.containerId !== SUPPLY_ID &&
-      event.over?.data.current?.tileId === event.active.id) {
       dispatch(removeTile(event.active.id));
       dispatch(addTile({
         containerId: SUPPLY_ID,
@@ -104,7 +101,7 @@ const App: React.FC = () => {
         <div id="TimeTiles" >
           {
             dayLabels.map((label, index) => (
-                <Day key={'day' + (index + 1)} label={label} id={index + 1} />
+                <Day key={'day-' + index} label={label} id={index} />
             ))
           }
           <div id="Controls">

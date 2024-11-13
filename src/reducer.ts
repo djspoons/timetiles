@@ -4,60 +4,53 @@ import { TileSpec } from './components/Tile';
 import { SUPPLY_ID } from "./constants";
 
 interface TilesState {
-    containers: (TileSpec & { index: number })[][];
+    supply: TileSpec[];
+    days: (TileSpec & { index: number })[][];
 }
 
 export const tilesSlice = createSlice({
     name: 'tiles',
     initialState: {
-        containers: Array.from({ length: 8 }, () => []),
+        // Tiles in the supply are given in their order
+        supply: [],
+        // Tiles in each day have an index (and are still orderd by index)
+        // to allow for gaps. Each index must be unique in a given day.
+        days: Array.from({ length: 7 }, () => []),
     } as TilesState,
     reducers: {
         addTile: (state, action) => {
-            if (action.payload.index < 0) {
-                state.containers[action.payload.containerId].push(
-                    {...action.payload.tile,
-                        index: state.containers[action.payload.containerId].length});
-            }
-            else {
-                if (action.payload.containerId === SUPPLY_ID) {
-                    state.containers[SUPPLY_ID].splice(
-                        action.payload.index, 0,
-                        {...action.payload.tile, index: action.payload.index});
-                    state.containers[SUPPLY_ID] = state.containers[SUPPLY_ID].map(
-                        (tile, index) => ({...tile, index: index}));
-                }
-                else {
-                    // For adding to days, assume no index collisions
-                    state.containers[action.payload.containerId].push(
-                        {...action.payload.tile, index: action.payload.index,});
-                    state.containers[action.payload.containerId].sort((a, b) => a.index - b.index);
-                }
+            if (action.payload.containerId === SUPPLY_ID) {
+                if (action.payload.index < 0) {
+                    state.supply.push(action.payload.tile);
+                } else {
+                    state.supply.splice(action.payload.index, 0, action.payload.tile);
+                } 
+            } else {
+                // For adding to days, assume no index collisions
+                state.days[action.payload.containerId].push(
+                    {...action.payload.tile, index: action.payload.index,});
+                state.days[action.payload.containerId].sort((a, b) => a.index - b.index);
             }
         },
 
         removeTile: (state, action) => {
-            state.containers = state.containers.map(
+            state.supply = state.supply.filter(tile => tile?.uuid !== action.payload);
+            state.days = state.days.map(
                 (tiles) => tiles.filter(tile => tile?.uuid !== action.payload))
-            // Renumber the tiles in the supply
-            state.containers[SUPPLY_ID] = state.containers[SUPPLY_ID].map(
-                (tile, index) => ({...tile, index: index}));
         },
 
         resetTiles: (state) => {
-            // Move all day tiles back to supply, sort by size and color
-            state.containers[SUPPLY_ID] = state.containers[SUPPLY_ID].concat(
-                ...state.containers.slice(1));
-            for (let i = 1; i < state.containers.length; i++) {
-                state.containers[i] = [];
-            }
-            state.containers[SUPPLY_ID] = state.containers[SUPPLY_ID].sort((a, b) => {
+            // Move all day tiles back to supply, remove indexes, and sort
+            // by color and label.
+            const tiles = state.days.flat().map(({index, ...tile}) => tile);
+            state.supply = state.supply.concat(tiles).sort((a, b) => {
                 const colorCompare = a.className.localeCompare(b.className);
                 if (colorCompare !== 0) {
                     return colorCompare;
                 }
                 return a.label.localeCompare(b.label);
-            }).map((tile, index) => ({...tile, index: index}));
+            });
+            state.days = Array.from({ length: 7 }, () => []);
         },
     },
 });
