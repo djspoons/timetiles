@@ -9,10 +9,10 @@ export interface TileSpec {
     className: string; // should set a background color
 }
 
-export const Tile: React.FC<TileSpec & { index: number, containerId: number}> = ({uuid, className, label, index, containerId}) => {
-    const {attributes, listeners, setNodeRef: setDraggableNodeRef, transform} = useDraggable({
-        id: uuid,
-    });
+export const Tile: React.FC<TileSpec & { index: number, containerId: number}> =
+        ({uuid, className, label, index, containerId}) => {
+    const {attributes, listeners, setNodeRef: setDraggableNodeRef, transform} =
+        useDraggable({id: uuid});
     const {setNodeRef: setDroppableNodeRef} = useDroppable({
         id: 'tile-' + uuid,
         data: {

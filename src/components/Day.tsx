@@ -28,9 +28,7 @@ export type DayProps = {
 
 const Day: React.FC<DayProps> = ({label, id, tiles}) => {
   const children = Array.from({length: DAY_SLOTS}, 
-    (_, index) => {
-      return tiles.find((tile) => tile?.index === index);
-    });
+    (_, index) => tiles.find((tile) => tile?.index === index));
 
   return (
     <div className="Day tile-container" id={'day-' + id}>

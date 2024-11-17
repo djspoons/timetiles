@@ -21,7 +21,7 @@ export const collisionDetection : CollisionDetection = function({
     active,
     droppableContainers: droppableContainers,
   });
-  // Now do closest corners on those intersections
+  // Now do closest on those intersections
   return closestCenter({
     ...args,
     active,
