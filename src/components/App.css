@@ -19,7 +19,12 @@
   gap: 5px 5px;
   grid-template-areas:
     "day-0 day-1 day-2 day-3 day-4 day-5 day-6"
-    "Controls Controls Supply Supply Supply Supply Supply"
+    "Controls Controls Supply Supply Supply Supply Supply";
+  @media print {
+    grid-template-rows: 100% 0px;
+    min-height: 60vh;
+    height: 60vh;
+  }
 }
 
 #day-0 { grid-area: day-0; }
@@ -38,6 +43,10 @@
   align-items: center;
   justify-content: center;
   row-gap: 10%;
+  @media print {
+    display: none;
+    height: 0px;
+  }
 }
 
 #Controls .button-container {
