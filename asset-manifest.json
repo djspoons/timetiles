@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://djspoons.github.io/timetiles/static/css/main.43fa0adb.css",
+    "main.css": "https://djspoons.github.io/timetiles/static/css/main.9495e0f6.css",
     "main.js": "https://djspoons.github.io/timetiles/static/js/main.9b0c45d7.js",
     "index.html": "https://djspoons.github.io/timetiles/index.html",
-    "main.43fa0adb.css.map": "https://djspoons.github.io/timetiles/static/css/main.43fa0adb.css.map",
+    "main.9495e0f6.css.map": "https://djspoons.github.io/timetiles/static/css/main.9495e0f6.css.map",
     "main.9b0c45d7.js.map": "https://djspoons.github.io/timetiles/static/js/main.9b0c45d7.js.map"
   },
   "entrypoints": [
-    "static/css/main.43fa0adb.css",
+    "static/css/main.9495e0f6.css",
     "static/js/main.9b0c45d7.js"
   ]
 }
